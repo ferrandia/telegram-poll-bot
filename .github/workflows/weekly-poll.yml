@@ -1,0 +1,26 @@
+name: Encuesta semanal
+
+on:
+  schedule:
+    # Lunes a las 09:00 UTC (GitHub Actions usa siempre UTC).
+    # Para España: ~10:00 en invierno, ~11:00 en verano.
+    - cron: "0 9 * * 1"
+  workflow_dispatch: {}   # permite lanzarla a mano desde la pestaña "Actions"
+
+jobs:
+  send-poll:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Enviar la encuesta
+        env:
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
+        run: python send_poll.py
