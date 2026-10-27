@@ -1,9 +1,9 @@
 name: Encuesta semanal
 
 on:
-  schedule:
-    - cron: "7 10 * * 2"
-      timezone: "Europe/Madrid"
+  # schedule:
+  #  - cron: "7 10 * * 2"
+  #    timezone: "Europe/Madrid"
   workflow_dispatch: {}   # permite lanzarla a mano desde la pestaña "Actions"
 
 jobs:
