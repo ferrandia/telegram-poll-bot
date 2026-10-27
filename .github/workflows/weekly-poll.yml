@@ -2,9 +2,8 @@ name: Encuesta semanal
 
 on:
   schedule:
-    # Martes a las 10:00 UTC (GitHub Actions usa siempre UTC, no ajusta el
-    # cambio de hora). Para España: 12:00 en verano (CEST), 11:00 en invierno (CET).
-    - cron: "0 10 * * 2"
+    - cron: "7 10 * * 2"
+      timezone: "Europe/Madrid"
   workflow_dispatch: {}   # permite lanzarla a mano desde la pestaña "Actions"
 
 jobs:
